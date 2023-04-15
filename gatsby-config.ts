@@ -28,6 +28,16 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
+  }, {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // Arbitrary name for the remote schema Query type
+        typeName: "Poke",
+        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
+        fieldName: "pokeapi",
+        // Url to query from
+        url: "https://beta.pokeapi.co/graphql/v1beta",
+      },
   }]
 };
 

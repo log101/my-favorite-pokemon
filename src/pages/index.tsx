@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { HeadFC, PageProps, graphql } from "gatsby"
 
 const pageStyles = {
   color: "#232129",
@@ -189,5 +189,21 @@ const IndexPage: React.FC<PageProps> = () => {
 }
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    pokeapi {
+      pokemon_v2_pokemon(where: {_or: [{name: {_eq: "charizard"}}, {name: {_eq: "snorlax"}}, {name: {_eq: "mewtwo"}}, {name: {_eq: "gyarados"}}, {name: {_eq: "gengar"}}, {name: {_eq: "magikarp"}}, {name: {_eq: "ditto"}}, {name: {_eq: "rayquaza"}}, {name: {_eq: "togepi"}}, {name: {_eq: "meowth"}}]}) {
+        name
+        id
+        pokemon_v2_pokemontypes {
+          pokemon_v2_type {
+            name
+          }
+        }
+      }
+    }
+  }
+`
 
 export const Head: HeadFC = () => <title>Home Page</title>
